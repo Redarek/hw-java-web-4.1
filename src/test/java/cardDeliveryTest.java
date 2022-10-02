@@ -23,14 +23,13 @@ public class cardDeliveryTest {
 
     String planningDate = generateDate(4);
 
-//    @BeforeEach
+    @BeforeEach
     void setupTest(){
-        open("http://localhost:9999");
+        Selenide.open("http://localhost:9999");
     }
 
     @Test
     void happyPathTest() {
-        open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Челябинск");
         clearDateInput();
         $("[data-test-id='date'] input").setValue(planningDate);
@@ -46,7 +45,6 @@ public class cardDeliveryTest {
 
     @Test
     void testFormWithoutCheckbox() {
-        open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Челябинск");
         clearDateInput();
         $("[data-test-id='date'] input").setValue(planningDate);
@@ -58,7 +56,6 @@ public class cardDeliveryTest {
 
     @Test
     void nameTest() {
-        open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Челябинск");
         clearDateInput();
         $("[data-test-id='date'] input").setValue(planningDate);
@@ -71,7 +68,6 @@ public class cardDeliveryTest {
 
     @Test
     void cityTest() {
-        open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Токио");
         clearDateInput();
         $("[data-test-id='date'] input").setValue(planningDate);
@@ -84,7 +80,6 @@ public class cardDeliveryTest {
 
     @Test
     void dateTest() {
-        open("http://localhost:9999");
         planningDate = generateDate(1);
         $("[data-test-id='city'] input").setValue("Челябинск");
         clearDateInput();
@@ -98,7 +93,6 @@ public class cardDeliveryTest {
 
     @Test
     void phoneTest() {
-        open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Челябинск");
         clearDateInput();
         $("[data-test-id='date'] input").setValue(planningDate);
@@ -111,7 +105,6 @@ public class cardDeliveryTest {
 
     @Test
     void emptyFormTest() {
-        open("http://localhost:9999");
         $x("//span[@class=\"button__text\"]").click();
         $x("//*[contains(text(),'Поле обязательно для заполнения')]");
     }
