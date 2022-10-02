@@ -25,7 +25,7 @@ public class cardDeliveryTest {
 
     @BeforeEach
     void setupTest(){
-        Selenide.open("http://localhost:9999");
+        open("http://localhost:9999");
     }
 
     @Test
