@@ -11,14 +11,9 @@ import java.time.format.DateTimeFormatter;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class cardDeliveryTest {
+public class CardDeliveryTest {
     public String generateDate(int days) {
         return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-    }
-    public void clearDateInput() {
-        for (int i = 0; i < 8; i++) {
-            $("[data-test-id='date'] input").sendKeys(Keys.BACK_SPACE);
-        }
     }
 
     String planningDate = generateDate(4);
@@ -31,7 +26,7 @@ public class cardDeliveryTest {
     @Test
     void happyPathTest() {
         $("[data-test-id='city'] input").setValue("Челябинск");
-        clearDateInput();
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(planningDate);
         $("[data-test-id='name'] input").setValue("Тиньков-Тинькофф Олег");
         $("[data-test-id='phone'] input").setValue("+79997770011");
@@ -46,7 +41,7 @@ public class cardDeliveryTest {
     @Test
     void testFormWithoutCheckbox() {
         $("[data-test-id='city'] input").setValue("Челябинск");
-        clearDateInput();
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(planningDate);
         $("[data-test-id='name'] input").setValue("Тиньков Олег");
         $("[data-test-id='phone'] input").setValue("+79997770011");
@@ -57,7 +52,7 @@ public class cardDeliveryTest {
     @Test
     void nameTest() {
         $("[data-test-id='city'] input").setValue("Челябинск");
-        clearDateInput();
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(planningDate);
         $("[data-test-id='name'] input").setValue("Tinkov-Tinkoff Oleg");
         $("[data-test-id='phone'] input").setValue("+79997770011");
@@ -69,7 +64,7 @@ public class cardDeliveryTest {
     @Test
     void cityTest() {
         $("[data-test-id='city'] input").setValue("Токио");
-        clearDateInput();
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(planningDate);
         $("[data-test-id='name'] input").setValue("Тиньков Олег");
         $("[data-test-id='phone'] input").setValue("+79997770011");
@@ -82,7 +77,7 @@ public class cardDeliveryTest {
     void dateTest() {
         planningDate = generateDate(1);
         $("[data-test-id='city'] input").setValue("Челябинск");
-        clearDateInput();
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(planningDate);
         $("[data-test-id='name'] input").setValue("Тиньков Олег");
         $("[data-test-id='phone'] input").setValue("+79997770011");
@@ -94,7 +89,7 @@ public class cardDeliveryTest {
     @Test
     void phoneTest() {
         $("[data-test-id='city'] input").setValue("Челябинск");
-        clearDateInput();
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(planningDate);
         $("[data-test-id='name'] input").setValue("Тиньков Олег");
         $("[data-test-id='phone'] input").setValue("89997770011");
